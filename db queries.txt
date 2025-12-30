@@ -1,0 +1,25 @@
+!!! update crop.crops crop_categories, create lgs2.crops table, make crop_name as primary key and then check the order !!!
+
+
+select distinct crop_category as category from crop.crops order by category
+
+update crop.crops
+set crop_category = 'root vegetables' where crop_category = 'root vegetable';
+update crop.crops
+set crop_category = 'leaf vegetables' where crop_category = 'leaf vegetable';
+update crop.crops
+set crop_category = 'leaf vegetables' where crop_category = 'leaf vegetable ';
+
+
+CREATE TABLE lgs2.crops AS
+SELECT * FROM crop.crops ORDER BY crop_name;
+
+ALTER TABLE lgs2.crops
+ADD PRIMARY KEY (crop_name);
+
+-- select distinct crop_category as category from lgs2.crops order by category
+
+select * from lgs2.crops
+
+
+=================================================================================

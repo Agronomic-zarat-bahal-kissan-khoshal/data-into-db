@@ -1,0 +1,54 @@
+crop variety upload queries
+
+1. crop variety table 
+select * from lgs2.crop_varieties where crop_fk = 'potato' order by variety_eng
+
+2. variety stages table
+SELECT *
+FROM lgs2.varieties_stages
+WHERE variety_fk IN ('cosmo', 'faislabad red', 'faislabad white',
+'kuroda', 'lady rosetta', 'pri-red', 'ruby', 'sadaf', 'sahiwal red', 
+'sahiwal white', 'sante', 'sh-5', 'sialkot red'
+);
+
+3. variety substages table
+
+SELECT vsu.*
+FROM lgs2.varieties_substages vsu
+JOIN lgs2.varieties_stages vst
+    ON vst.uuid = vsu.stage_uuid
+WHERE vst.variety_fk IN (
+    'cosmo', 'faislabad red', 'faislabad white', 'kuroda', 'lady rosetta', 'pri-red', 'ruby', 'sadaf', 'sahiwal red', 'sahiwal white', 'sante', 'sh-5', 'sialkot red'
+)
+AND vsu.created_at > '2025-12-22'
+ORDER BY vst.variety_fk,
+vsu.sub_stage;
+
+SELECT
+    vst.variety_fk AS crop_variety,
+    COUNT(*) AS substage_count
+FROM lgs2.varieties_substages vsu
+JOIN lgs2.varieties_stages vst
+    ON vst.uuid = vsu.stage_uuid
+WHERE
+    vsu.created_at > DATE '2025-12-22'
+    AND vst.variety_fk IN (
+        'jaur-17',
+        'sultan-17',
+        'awaran-2002',
+        'local turbat',
+        'rakhshan-10',
+        'sanober-96',
+        'talbina-21',
+        'pearl-21 ( irrigated )',
+        'pearl-21 ( rainfed )',
+        'haider-93',
+        'sorab-96'
+    )
+GROUP BY
+    vst.variety_fk
+ORDER BY
+    vst.variety_fk;
+
+
+ 

@@ -1,0 +1,84 @@
+SELECT 
+	*
+FROM
+	lgs2.crops
+
+-- --------------------
+
+CREATE TABLE IF NOT EXISTS lgs2.crops (
+    crop TEXT PRIMARY KEY,
+    category TEXT NOT NULL,
+    yield_type TEXT NOT NULL,
+
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+-- --------------------
+
+INSERT INTO lgs2.crops (crop, category, yield_type)
+VALUES
+('alfalfa', 'legume vegetables', 'forage biomass'),
+('banana', 'fruit', 'fresh fruit'),
+('barley', 'cereal', 'dry grains'),
+('bottle gourd', 'fruit', 'fresh fruit'),
+('brinjal', 'fruit', 'fresh fruit'),
+('broccoli', 'leaf vegetables', 'flower head'),
+('buckwheat', 'cereal', 'dry grains'),
+('cabbage', 'leaf vegetables', 'leaf head'),
+('canary seed', 'cereal', 'dry grains'),
+('canola', 'oil seed', 'oil seed'),
+('carrot', 'root vegetables', 'root'),
+('cassava', 'root vegetables', 'tuber'),
+('cauliflower', 'leaf vegetables', 'flower head'),
+('chickpea kabuli', 'legume vegetables', 'dry grains'),
+('citrus', 'fruit', 'fresh fruit'),
+('coriander (seed)', 'leaf vegetables', 'seed'),
+('cotton', 'fiber crop', 'lint'),
+('cowpea', 'legume vegetables', 'dry grains'),
+('cucumber', 'fruit', 'fresh fruit'),
+('flax seed', 'oil seed', 'oil seed'),
+('foxtail millet', 'cereal', 'dry grains'),
+('french beans', 'legume vegetables', 'fresh pods'),
+('jatropha', 'legume oil seed crop', 'oil seed'),
+('kidney beans', 'legume vegetables', 'dry grains'),
+('lentil', 'legume vegetables', 'dry grains'),
+('maize', 'cereal', 'dry grains'),
+('mash', 'legume vegetables', 'dry grains'),
+('miscanthus', 'fiber crop', 'biomass'),
+('millet', 'cereal', 'dry grains'),
+('mustard', 'oil seed', 'oil seed'),
+('napier grass', 'stem vegetables', 'forage biomass'),
+('oat', 'cereal', 'dry grains'),
+('okra', 'fruit', 'fresh pods'),
+('olive', 'fruit', 'oil fruit'),
+('onion', 'bulb vegetables', 'bulb'),
+('pea', 'legume vegetables', 'fresh pods'),
+('peanut', 'legume oil seed crop', 'oil seed'),
+('pearl millet', 'cereal', 'dry grains'),
+('pigeon pea', 'legume vegetables', 'dry grains'),
+('potato', 'root vegetables', 'tuber'),
+('radish', 'root vegetables', 'root'),
+('rapeseed', 'oil seed', 'oil seed'),
+('reed canary seed', 'cereal', 'dry grains'),
+('rice', 'cereal', 'dry grains'),
+('rye', 'cereal', 'dry grains'),
+('sesame', 'oil seed', 'oil seed'),
+('silage maize', 'cereal', 'forage biomass'),
+('sorghum', 'cereal', 'dry grains'),
+('sponge gourd', 'fruit', 'fresh fruit'),
+('sugar beet', 'root vegetables', 'root (sugar)'),
+('sugarcane', 'stem vegetables', 'cane juice'),
+('sunflower', 'oil seed', 'oil seed'),
+('sweet potato', 'root vegetables', 'tuber'),
+('switch grass', 'fiber crop', 'biomass'),
+('tea', 'leaf vegetables', 'leaf'),
+('tinda gourd', 'fruit', 'fresh fruit'),
+('tobacco', 'leaf vegetables', 'leaf'),
+('tomato', 'fruit', 'fresh fruit'),
+('turnip', 'root vegetables', 'root'),
+('vegetable marrow', 'fruit', 'fresh fruit'),
+('watermelon', 'fruit', 'fresh fruit'),
+('wheat', 'cereal', 'dry grains'),
+('yam', 'root vegetables', 'tuber')
+ON CONFLICT (crop) DO NOTHING;
